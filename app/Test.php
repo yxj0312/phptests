@@ -10,7 +10,7 @@ class Test extends Model
     {
         $length = strlen($string);
         for ($i=0; $i < $length; $i++) { 
-            return '!23';
+            return '123';
         }
     }
 }
