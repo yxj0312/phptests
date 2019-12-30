@@ -20,9 +20,9 @@ class Test extends Model
                     $result[] = $s;
                 }
             }
-            sort($result);
         }
-        
+        sort($result);
+
         $imploded = implode($result);
         return $imploded[$k - 1] ?? '';
     }

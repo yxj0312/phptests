@@ -24,8 +24,9 @@ function reviveString(string $string, int $k): string {
                 $result[] = $s;
             }
         }
-        sort($result);
     }
+    
+    sort($result);
     
     $imploded = implode($result);
     return $imploded[$k - 1] ?? '';
