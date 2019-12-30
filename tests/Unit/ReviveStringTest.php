@@ -55,4 +55,15 @@ class ReviveStringTest extends TestCase
         166098);
         $this->assertEquals('u', $test);
     }
+
+    /** @test */
+    function all_substring_should_be_unique()
+    {
+        // should return aabababba
+        $test = Test::reviveString('aba', 9);
+        $this->assertEquals('a', $test);
+
+        $test = Test::reviveString('aba', 10);
+        $this->assertEquals('', $test);
+    }
 }
