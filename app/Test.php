@@ -22,7 +22,8 @@ class Test extends Model
             }
             sort($result);
         }
-            $imploded = implode($result);
-            return $imploded[$k - 1] ?? '';
+        
+        $imploded = implode($result);
+        return $imploded[$k - 1] ?? '';
     }
 }
