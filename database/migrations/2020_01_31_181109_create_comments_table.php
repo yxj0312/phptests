@@ -13,13 +13,16 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->integer('post_id')->index();
-            $table->integer('parent_id')->index()->nullable();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('post_id');
+            $table->integer('parent_id')->nullable();
             $table->text('body');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -30,8 +33,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            Schema::drop('comments');
-        });
+        Schema::dropIfExists('comments');
     }
 }
