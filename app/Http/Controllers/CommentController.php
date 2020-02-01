@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,13 +19,12 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function store()
+    public function store(Post $post)
     {
-        Comment::create([
+        $post->addComment([
             'body' => request('body'),
-            'user_id' => Auth::id(),
+            'parent_id'=> request('parent_id', null)
         ]);
-
         return back();
     }
 }

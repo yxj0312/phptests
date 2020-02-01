@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ $post->title }}</h1>
 
-        <title>Laravel</title>
+    <div class="body">{{ $post->body }}</div>
 
-    </head>
-    <body>
-        {{ $post->title }}
-        {{ $post->body }}
-    </body>
+    <hr>
+
+    <h3>Comments</h3>
+
+    @include ('comments.list', ['collection' => $comments['root']])
+
+    @if (Auth::check())
+        <h3>Leave a Reply</h3>
+
+        @include ('comments.form')
+    @endif
+
+</body>
 </html>

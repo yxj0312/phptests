@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('post/{post}', 'PostController@show')->name('posts.show');
-Route::post('post/{post}/comments', 'CommentController@store')->name('comments.store');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+Route::post('posts/{post}/comments', 'CommentController@store')->name('comments.store');
 
 Auth::routes();
 

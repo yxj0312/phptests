@@ -11,6 +11,11 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function getComments()
+    {
+        return $this->comments()->with('owner')->get()->threaded();
+    }
+
     public function addComment($attributes)
     {
         $comment = (new Comment)->fill($attributes);
