@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('post/{post}', 'PostController@show')->name('posts.show');
+Route::post('post/{post}/comments', 'CommentController@store')->name('comments.store')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
