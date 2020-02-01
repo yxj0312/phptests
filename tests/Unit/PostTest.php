@@ -19,4 +19,18 @@ class PostTest extends TestCase
         
         $this->assertInstanceOf(Comment::class, $post->comments->first());
     }
+
+    /** @test */
+    function user_can_add_comment_to_a_post()
+    {
+        $user = $this->signInUser();
+        $post = $this->create(Post::class, ['user_id' => $user->id]);
+        $commentToArray = [
+            'body' => 'First Comment'
+        ];
+
+        $post->addComment($commentToArray);
+
+        $this->assertDatabaseHas('comments', $commentToArray);
+    }
 }

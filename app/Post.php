@@ -10,4 +10,15 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function addComment($attributes)
+    {
+        $comment = (new Comment)->fill($attributes);
+
+        $comment->user_id = auth()->id();
+
+        $comment->post_id = $this->id;
+
+        return $comment->save();
+    }
 }

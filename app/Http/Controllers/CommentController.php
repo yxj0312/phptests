@@ -20,10 +20,11 @@ class CommentController extends Controller
 
     public function store()
     {
-        // dd(Auth::id());
         Comment::create([
             'body' => request('body'),
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
         ]);
+
+        return back();
     }
 }
