@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('post/{post}', 'PostController@show')->name('posts.show');
-Route::post('post/{post}/comments', 'CommentController@store')->name('comments.store')->middleware('auth');
+Route::post('post/{post}/comments', 'CommentController@store')->name('comments.store');
 
 Auth::routes();
 

@@ -14,7 +14,7 @@ class CommentStoreTest extends TestCase
     /** @test */
     function guest_may_not_create_comments()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $post = $this->create(Post::class, ['user_id' => 1]);
         $this->post(route('comments.store', ['post' => $post]))->assertStatus(302);
     }
